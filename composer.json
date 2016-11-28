@@ -1,0 +1,16 @@
+{
+    "name": "tuupke/laravel-finalizer",
+    "description": "Simple package with helpers to handle execution after closed connections",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Mart Pluijmaekers",
+            "email": "mart@tuupke.nl"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.0.0"
+    }
+}
