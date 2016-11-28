@@ -23,7 +23,7 @@ From somewhere within your application you can now call: `Finalizer::register($c
 ##Example
 A minimalist example which stores some contents in a file is listed below. Note that this should not be used in an actual application. When logging is required, use the Log facade.
 
-`
+```
 Finalizer::register(function(){
     file_put_contents('/tmp/finalizer-test', "Second String", FILE_APPEND);
 }, 2);
@@ -31,7 +31,7 @@ Finalizer::register(function(){
 Finalizer::register(function(){
     file_put_contents('/tmp/finalizer-test', "First String\n", FILE_APPEND);
 }, 1);
-`
+```
 
 After a request has been executed which contained this code-block, the contents of `/tmp/finalizer-test` is:
 
