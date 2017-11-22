@@ -7,7 +7,7 @@ class Finalizer {
     /**
      * Finalizer constructor. Registers the shutdown function
      */
-    public final function __construct() {
+    public final function __construct () {
         register_shutdown_function(function ($obj) {
             $closurePriorities = $obj->closures;
 
@@ -17,7 +17,6 @@ class Finalizer {
             foreach ($closurePriorities as $priority => $closures)
                 foreach ($closures as $closure)
                     $closure();
-
         }, $this);
     }
 
@@ -27,7 +26,10 @@ class Finalizer {
      * @param \Closure $cb The closure to call.
      * @param int $priority The priority of execution.
      */
-    public final function register(\Closure $cb, int $priority = 100) {
-        $this->closures[$priority][] = $cb;
+    public final function register (\Closure $cb, int $priority = 100) {
+        if (php_sapi_name() === 'cli') // running from console/daemon
+            $cb();
+        else
+            $this->closures[$priority][] = $cb;
     }
 }
