@@ -17,5 +17,13 @@
         "psr-4": {
             "Tuupke\\Finalizer\\": "src"
         }
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Finalizer": "Tuupke\\Finalizer\\FinalizerFacade"
+            }
+        }
     }
 }
+

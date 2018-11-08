@@ -10,6 +10,6 @@ class FinalizerFacade extends Facade {
      * @return string
      */
     protected static function getFacadeAccessor() {
-        return 'Finalizer';
+        return Finalizer::class;
     }
 }
