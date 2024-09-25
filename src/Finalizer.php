@@ -21,7 +21,11 @@ class Finalizer {
 
             foreach ($closurePriorities as $priority => $closures) {
                 foreach ($closures as $closure) {
-                    $closure();
+                    try {
+                        $closure();
+                    } catch (\Throwable $t) {
+                        \Log::error("Throwable caught in finalizer", [$t]);
+                    }
                 }
             }
         }, $this);
