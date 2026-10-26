@@ -17,9 +17,10 @@ class FinalizerServiceProvider extends ServiceProvider {
      * @return void
      */
     public function register() {
-        \App::bind('Finalizer', function () {
+        \App::singleton(Finalizer::class, function () {
             return new Finalizer;
         });
+        \App::alias(Finalizer::class, 'Finalizer');
     }
 
 }
