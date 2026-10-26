@@ -1,5 +1,7 @@
 <?php namespace Tuupke\Finalizer;
 
+use Illuminate\Support\Facades\Log;
+
 class Finalizer {
 
     private $closures   = [];
@@ -24,7 +26,7 @@ class Finalizer {
                     try {
                         $closure();
                     } catch (\Throwable $t) {
-                        \Log::error("Throwable caught in finalizer", [$t]);
+                        Log::error("Throwable caught in finalizer", [$t]);
                     }
                 }
             }
