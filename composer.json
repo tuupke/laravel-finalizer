@@ -21,6 +21,9 @@
     },
     "extra": {
         "laravel": {
+            "providers": [
+                "Tuupke\\Finalizer\\FinalizerServiceProvider"
+            ],
             "aliases": {
                 "Finalizer": "Tuupke\\Finalizer\\FinalizerFacade"
             }
