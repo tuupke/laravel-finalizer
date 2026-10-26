@@ -59,3 +59,19 @@ $finalizer->register(function(){
     ... <YOUR CODE GOES HERE> ...
 });
 ```
+
+# Testing
+The tests run entirely in Docker, so only `make` and `docker` are required. They install the package against every supported PHP/Laravel combination and run two suites:
+
+- **CLI**: checks the container binding and facade, that closures run immediately on the CLI, and that the shutdown handler runs closures by priority and logs throwables.
+- **HTTP**: starts PHP-FPM behind nginx and performs real requests. It verifies that the response is sent before the registered closures run, and that `inSyncOnExit()` keeps the connection open until they have finished.
+
+```
+make test                       # all combinations, both suites
+make test PHP=8.5 LARAVEL=13    # a single combination
+make test-cli                   # only the CLI suite
+make test-http                  # only the HTTP suite
+make clean                      # remove the .build/ working directory
+```
+
+The first run pulls the required Docker images and is therefore slower.
